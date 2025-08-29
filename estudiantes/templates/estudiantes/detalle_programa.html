@@ -1,0 +1,19 @@
+{% extends "estudiantes/base.html" %}
+
+{% block title %}{{ programa.nombre }}{% endblock %}
+
+{% block content %}
+<h1>{{ programa.nombre }}</h1>
+<p><strong>Descripción:</strong> {{ programa.descripcion }}</p>
+
+<h2>Cursos del programa</h2>
+<ul>
+    {% for curso in cursos %}
+        <li>
+            <a href="{% url 'estudiantes:detalle_curso' curso.pk %}">{{ curso.nombre }}</a>
+        </li>
+    {% empty %}
+        <li>No hay cursos registrados en este programa.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "estudiantes/base.html" %}
+
+{% block title %}Programas{% endblock %}
+
+{% block content %}
+<h1>Lista de Programas</h1>
+
+<ul>
+    {% for programa in programas %}
+    <li>
+        <a href="{% url 'estudiantes:detalle_programa' programa.pk %}">
+            Programa: {{ programa.nombre }}
+        </a>
+            - Código: {{ programa.codigo }}
+            - Duración: {{ programa.duracion }}
+            - Facultad: {{ programa.facultad }}
+    </li>
+    {% empty %}
+    <li>No hay programas registrados.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

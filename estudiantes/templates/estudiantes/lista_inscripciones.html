@@ -1,0 +1,23 @@
+{% extends "estudiantes/base.html" %}
+
+{% block title %}Inscripciones{% endblock %}
+
+{% block content %}
+<h1>Lista de Inscripciones</h1>
+
+<ul>
+    {% for ins in inscripciones %}
+    <li>
+        <a href="{% url 'estudiantes:detalle_inscripcion' ins.pk %}">
+            Inscripción #{{ ins.id }}
+        </a>
+            - Estudiante: {{ ins.estudiante.nombre }}
+            - Curso: {{ ins.curso.nombre }}
+            - Fecha: {{ ins.fecha|date:"d/m/Y" }}
+            - Estado: {{ ins.estado }}
+    </li>
+    {% empty %}
+    <li>No hay inscripciones registradas.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

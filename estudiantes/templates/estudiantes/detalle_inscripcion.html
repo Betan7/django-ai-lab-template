@@ -1,0 +1,21 @@
+{% extends "estudiantes/base.html" %}
+
+{% block title %}Inscripción #{{ inscripcion.id }}{% endblock %}
+
+{% block content %}
+<h1>Inscripción #{{ inscripcion.id }}</h1>
+
+<p><strong>Estudiante:</strong>
+   <a href="{% url 'estudiantes:detalle_estudiante' inscripcion.estudiante.pk %}">
+       {{ inscripcion.estudiante.nombre }}
+   </a>
+</p>
+
+<p><strong>Curso:</strong>
+   <a href="{% url 'estudiantes:detalle_curso' inscripcion.curso.pk %}">
+       {{ inscripcion.curso.nombre }}
+   </a>
+</p>
+
+<p><strong>Fecha de inscripción:</strong> {{ inscripcion.fecha|date:"d/m/Y" }}</p>
+{% endblock %}
